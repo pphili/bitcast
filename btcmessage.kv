@@ -1,0 +1,196 @@
+<InputLayout>
+	orientation: 'horizontal'
+
+	address: address
+	net:net
+	labelnet:labelnet
+	coins:coins
+	message: message
+	outaddress: outaddress
+	priv: priv
+	amount: amount
+
+	canvas.before:
+		Color:
+			rgb: 0.66, 0.66, 0.66, 1 # your color here
+		Rectangle:
+			pos: self.pos
+			size: self.size
+
+	
+	FloatLayout:
+
+		size_hint: 0.5, 1
+
+		Label:
+			text: 'Inputs'
+			font_size: 50
+
+			text_size: self.width, None
+			height: self.texture_size[1]
+			halign: 'center'
+			valign: 'middle'
+
+			size_hint: 0.75, None
+			size:self.texture_size
+			pos_hint:{'top': 0.98, 'right': 1 - (1 - self.width/self.parent.width) / 2}
+			
+			rectangleColor: 0,0,0,0.8 
+    		canvas:
+        		Color:
+            		rgba: self.rectangleColor
+        		Line:
+            		rectangle: self.x, self.y, self.width, 1.2 * self.height
+            		width: 3
+				
+
+
+
+		Label:
+			text: 'Address: '
+			font_size: 40
+
+			text_size: self.size
+			halign: 'left'
+			valign: 'bottom'
+
+			size_hint: 0.8, None 
+			pos_hint:{'top': 0.92, 'right':0.9}
+
+		TextInput:
+			id: address
+			multiline: False
+			height:40
+			font_size:self.height-10
+			size_hint: 0.8, None 
+			pos_hint:{'top': 0.83, 'right':0.9}
+
+		Button:
+			text: 'submit'
+			on_press: root.SubAddress()
+			size_hint: 0.8, None
+			pos_hint:{'top': 0.78, 'right':0.9}
+
+		Switch:
+			id:net
+			size_hint: 0.8, None
+			pos_hint:{'top': 0.73, 'right':0.9}
+
+		Label:
+			id: labelnet
+			text: 'Mainnet' if net.active else 'Testnet'
+			font_size: 30
+			size_hint: 0.8, None 
+			pos_hint:{'top': 0.68, 'right':0.9}
+
+		Label:
+			id: coins
+			text: 'Amount of coins'
+			font_size: 30
+			size_hint: 0.8, None 
+			pos_hint:{'top': 0.63, 'right':0.9}
+
+	FloatLayout:
+
+		size_hint: 0.5, 1
+
+		Label:
+			text: 'Outputs: '
+			font_size: 50
+
+			text_size: self.width, None
+			height: self.texture_size[1]
+			halign: 'center'
+			valign: 'middle'
+
+			size_hint: 0.75, None
+			size:self.texture_size
+			pos_hint:{'top': 0.98, 'right': 0.875}
+			
+			rectangleColor: 0.2,0,1,0.8 
+    		canvas:
+        		Color:
+            		rgba: self.rectangleColor
+        		Line:
+            		rectangle: self.x, self.y, self.width, 1.2 * self.height
+            		width: 3
+
+		Label:
+			text: 'Message: '
+			font_size: 40
+
+			text_size: self.size
+			halign: 'left'
+			valign: 'bottom'
+
+			size_hint: 0.8, None 
+			pos_hint:{'top': 0.92, 'right':0.9}
+
+		TextInput:
+			id: message
+			multiline: False
+			height:40
+			font_size:self.height-10
+			size_hint: 0.8, None 
+			pos_hint:{'top': 0.83, 'right':0.9}
+
+		Button:
+			text: 'submit'
+			on_press: root.Sub_message()
+			size_hint: 0.8, None
+			pos_hint:{'top': 0.78,'right':0.9}
+
+		Label:
+			id: outaddress
+			text: 'OutputAddress'
+			font_size: 30
+			size_hint: 0.8, None 
+			pos_hint:{'top': 0.71, 'right':0.9}
+
+		Label:
+			text: 'Private Key: '
+			font_size: 40
+
+			text_size: self.size
+			halign: 'left'
+			valign: 'bottom'
+
+			size_hint: 0.8, None 
+			pos_hint:{'top': 0.66, 'right':0.9}
+
+		TextInput:
+			id: priv
+			multiline: False
+			height:40
+			font_size:self.height-10
+			size_hint: 0.8, None 
+			pos_hint:{'top': 0.57, 'right':0.9}
+
+		Label:
+			text: 'Amount: '
+			font_size: 40
+
+			text_size: self.size
+			halign: 'left'
+			valign: 'bottom'
+
+			size_hint: 0.8, None 
+			pos_hint:{'top': 0.52, 'right':0.9}
+
+		TextInput:
+			id: amount
+			multiline: False
+			height:40
+			font_size:self.height-10
+			size_hint: 0.8, None 
+			pos_hint:{'top': 0.43, 'right':0.9}
+
+
+		Button:
+			text: 'send'
+			on_press: root.send_transaction()
+			size_hint: 0.8, None
+			pos_hint:{'top': 0.38, 'right':0.9}
+
+
+
